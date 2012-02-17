@@ -6,8 +6,8 @@ ACLOCAL_AMFLAGS = -I build/autoconf
 #
 # What to build and install
 #
-lib_LTLIBRARIES=	libarchive.la
-noinst_LTLIBRARIES=	libarchive_fe.la
+lib_LTLIBRARIES=	libarchive.la libarchive_fe.la
+noinst_LTLIBRARIES=
 bin_PROGRAMS=	$(bsdtar_programs) $(bsdcpio_programs)
 man_MANS= $(libarchive_man_MANS) $(bsdtar_man_MANS) $(bsdcpio_man_MANS)
 BUILT_SOURCES= libarchive/test/list.h tar/test/list.h cpio/test/list.h
@@ -80,7 +80,13 @@ distclean-local:
 #
 #
 
-include_HEADERS= libarchive/archive.h libarchive/archive_entry.h
+include_HEADERS=			\
+	libarchive/archive.h		\
+	libarchive/archive_entry.h	\
+	libarchive/archive_platform.h	\
+	libarchive/archive_string.h	\
+	libarchive_fe/matching.h	\
+	config.h
 
 libarchive_la_SOURCES=						\
 	libarchive/archive_acl.c				\
